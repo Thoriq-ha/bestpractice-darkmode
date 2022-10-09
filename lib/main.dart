@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_darkmode/home_page.dart';
-import 'package:tutorial_darkmode/shared_pref.dart';
 
 Future<void> main() async {
-  /* WidgetFlutterBinding digunakan untuk berinteraksi dengan mesin Flutter.
-  SharedPref.init() perlu memanggil kode asli untuk menginisialisasi, oleh karena itu 
-  perlu memanggil ensureInitialized() untuk memastikan terdapat instance yang bisa dijalankan */
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await SharedPref.init();
-
   runApp(const MyApp());
 }
 
@@ -27,22 +19,14 @@ class _MyAppState extends State<MyApp> {
   void setTheme(bool isDarkmode) {
     setState(() {
       themeData = (isDarkmode) ? ThemeData.dark() : ThemeData.light();
-
-      /* simpan nilai boolean pada shared preferences */
-      SharedPref.pref?.setBool('isDarkmode', isDarkmode);
     });
   }
 
   /* hanya dijalankan sekali ketika halaman / class MyApp pertama kali di jalankan */
   @override
   void initState() {
-    /* default / tema awal dibuat sesuai data yang tersimpan pada shared preferences
-    atau jika masih kosong (belum ada yang set) maka akan di berikan nilai false */
-    bool isDarkmode = SharedPref.pref?.getBool('isDarkmode') ?? false;
-    setTheme(isDarkmode);
-
     /* default / tema awal dibuat tidak gelap (isDarkmode = false) */
-    // setTheme(false);
+    setTheme(false);
     super.initState();
   }
 
