@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tutorial_darkmode/shared_pref.dart';
 
 class HomePage extends StatefulWidget {
   Function setTheme;
@@ -10,8 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // bool isDarkmode = false;
-  bool isDarkmode = SharedPref.pref?.getBool('isDarkmode') ?? false;
+  bool isDarkmode = false;
 
   @override
   Widget build(BuildContext context) {
