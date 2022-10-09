@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
   /* fungsi mengubah tema sesuai inputan parameter */
   void setTheme(bool isDarkmode) {
     setState(() {
+      /* jika isDarkmode true maka ThemeData adalah dark dan sebaliknya */
       themeData = (isDarkmode) ? ThemeData.dark() : ThemeData.light();
 
       /* simpan nilai boolean pada shared preferences */
@@ -41,8 +42,6 @@ class _MyAppState extends State<MyApp> {
     bool isDarkmode = SharedPref.pref?.getBool('isDarkmode') ?? false;
     setTheme(isDarkmode);
 
-    /* default / tema awal dibuat tidak gelap (isDarkmode = false) */
-    // setTheme(false);
     super.initState();
   }
 

@@ -10,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // bool isDarkmode = false;
   bool isDarkmode = SharedPref.pref?.getBool('isDarkmode') ?? false;
 
   @override
